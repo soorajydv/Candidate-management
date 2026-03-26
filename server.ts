@@ -20,9 +20,19 @@ async function startServer() {
   // MongoDB Connection
   const mongoUri = process.env.MONGO_URI;
   if (mongoUri) {
-    mongoose.connect(mongoUri)
-      .then(() => console.log("Connected to MongoDB"))
-      .catch((err) => console.error("MongoDB connection error:", err));
+    try {
+      await mongoose.connect(mongoUri, {
+        serverSelectionTimeoutMS: 30000, // 30 seconds
+        socketTimeoutMS: 45000, // 45 seconds
+        connectTimeoutMS: 30000, // 30 seconds
+        maxIdleTimeMS: 30000, // 30 seconds
+        bufferCommands: false, // Disable mongoose buffering
+      });
+      console.log("Connected to MongoDB");
+    } catch (err) {
+      console.error("MongoDB connection error:", err);
+      process.exit(1);
+    }
   } else {
     console.warn("MONGO_URI not found in environment variables. Database features will not work.");
   }
