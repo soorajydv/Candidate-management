@@ -7,9 +7,9 @@
   "dev": "tsx server.ts",
   "build": "vite build && tsc -p tsconfig.server.json",
   "start": "node dist/server/server.js",
-    "preview": "vite preview",
-    "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+  "preview": "vite preview",
+  "clean": "rm -rf dist",
+  "lint": "tsc --noEmit"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

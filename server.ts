@@ -15,7 +15,7 @@ dotenv.config();
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = 3005;
 
   // MongoDB Connection
   const mongoUri = process.env.MONGO_URI;
