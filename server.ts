@@ -8,8 +8,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 // Routes
-import candidateRoutes from "./src/modules/candidate/candidate.route";
-import authRoutes from "./src/modules/auth/auth.route";
+import candidateRoutes from "./src/modules/candidate/candidate.route.js";
+import authRoutes from "./src/modules/auth/auth.route.js";
 
 dotenv.config();
 
@@ -28,7 +28,7 @@ async function startServer() {
         maxIdleTimeMS: 30000, // 30 seconds
         bufferCommands: false, // Disable mongoose buffering
       });
-      console.log("Connected to MongoDB");
+      console.log("Connected to MongoDB", mongoUri);
     } catch (err) {
       console.error("MongoDB connection error:", err);
       process.exit(1);
